@@ -13,13 +13,13 @@ type Meta struct {
 type Data interface {
 }
 
-type Error interface {
+type Errors interface {
 }
 
 type ApiResponse struct {
-	Meta  `json:"meta"`
-	Data  `json:"data"`
-	Error `json:"error"`
+	Meta   `json:"meta"`
+	Data   `json:"data"`
+	Errors `json:"errors"`
 }
 
 func Ok(ctx echo.Context, data interface{}) error {
@@ -38,7 +38,7 @@ func InternalServerError(ctx echo.Context, err error) error {
 			Code:   http.StatusInternalServerError,
 			Status: http.StatusText(http.StatusInternalServerError),
 		},
-		Error: err.Error(),
+		Errors: err.Error(),
 	})
 }
 
@@ -48,7 +48,7 @@ func NotFound(ctx echo.Context, err error) error {
 			Code:   http.StatusNotFound,
 			Status: http.StatusText(http.StatusNotFound),
 		},
-		Error: err.Error(),
+		Errors: err.Error(),
 	})
 }
 
@@ -58,6 +58,6 @@ func Unauthorized(ctx echo.Context, errorMessage string) error {
 			Code:   http.StatusUnauthorized,
 			Status: http.StatusText(http.StatusUnauthorized),
 		},
-		Error: errorMessage,
+		Errors: errorMessage,
 	})
 }

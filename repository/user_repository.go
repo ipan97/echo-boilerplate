@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/ipan97/echo-boilerplate/app/models"
+	"github.com/ipan97/echo-boilerplate/models"
 	"github.com/jinzhu/gorm"
 )
 

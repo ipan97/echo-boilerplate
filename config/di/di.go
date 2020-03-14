@@ -1,9 +1,9 @@
 package di
 
 import (
-	"github.com/ipan97/echo-boilerplate/app/controllers"
-	"github.com/ipan97/echo-boilerplate/app/repository"
-	"github.com/ipan97/echo-boilerplate/conf/db"
+	"github.com/ipan97/echo-boilerplate/config/db"
+	"github.com/ipan97/echo-boilerplate/controllers"
+	"github.com/ipan97/echo-boilerplate/repository"
 )
 
 func InjectUserController() *controllers.UserController {

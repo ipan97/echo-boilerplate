@@ -1,10 +1,11 @@
 package main
 
 import (
-	"github.com/ipan97/echo-boilerplate/app/controllers"
-	"github.com/ipan97/echo-boilerplate/app/models"
-	"github.com/ipan97/echo-boilerplate/conf/db"
-	"github.com/ipan97/echo-boilerplate/conf/di"
+	"github.com/foolin/goview/supports/echoview-v4"
+	"github.com/ipan97/echo-boilerplate/config/db"
+	"github.com/ipan97/echo-boilerplate/config/di"
+	"github.com/ipan97/echo-boilerplate/controllers"
+	"github.com/ipan97/echo-boilerplate/models"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 )
@@ -18,8 +19,12 @@ func main() {
 	app.Use(middleware.Logger())
 	app.Use(middleware.Recover())
 
+	//Set Renderer
+	app.Renderer = echoview.Default()
+
 	// Routers
 	app.GET("/", controllers.Index)
+	app.GET("/page", controllers.Page)
 
 	api := app.Group("/api")
 	{

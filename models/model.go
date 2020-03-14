@@ -1,10 +1,11 @@
 package models
 
 import (
-"github.com/jinzhu/gorm"
-"github.com/satori/go.uuid"
-"time"
+	"github.com/jinzhu/gorm"
+	"github.com/satori/go.uuid"
+	"time"
 )
+
 type Model struct {
 	ID        string `gorm:"type:varchar(36);primary_key"`
 	CreatedAt time.Time
